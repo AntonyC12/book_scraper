@@ -18,13 +18,9 @@ ADDONS = {}
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "book_scraper (+http://www.yourdomain.com)"
 
-# Obey robots.txt rules
-ROBOTSTXT_OBEY = True
-
 # Concurrency and throttling settings
-#CONCURRENT_REQUESTS = 16
-CONCURRENT_REQUESTS_PER_DOMAIN = 1
-DOWNLOAD_DELAY = 1
+CONCURRENT_REQUESTS = 16
+CONCURRENT_REQUESTS_PER_DOMAIN = 5
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -85,3 +81,18 @@ DOWNLOAD_DELAY = 1
 
 # Set settings whose default value is deprecated to a future-proof value
 FEED_EXPORT_ENCODING = "utf-8"
+
+# Configuración de pipelines
+ITEM_PIPELINES = {
+    'book_scraper.pipelines.BookScraperPipeline': 300,
+}
+
+# Configuración de descarga
+ROBOTSTXT_OBEY = True
+DOWNLOAD_DELAY = 0.5  # 1 segundo entre peticiones
+AUTOTHROTTLE_ENABLED = True
+AUTOTHROTTLE_START_DELAY = 1
+AUTOTHROTTLE_MAX_DELAY = 60
+
+# User-Agent
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
